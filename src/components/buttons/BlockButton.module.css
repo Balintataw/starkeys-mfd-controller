@@ -1,0 +1,14 @@
+.block_button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid var(--blue);
+  border-radius: 2px;
+  padding: 8px;
+  background: linear-gradient(180deg, rgba(2,0,36,0) 0%, rgba(9,9,121,0) 45%, var(--blue10) 100%);
+  color: var(--blue);
+}
+
+.block_button:active {
+  background-color: var(--blue10);
+}

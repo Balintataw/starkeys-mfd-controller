@@ -1,0 +1,22 @@
+.button__radial {
+  position: absolute;
+  height: 320px;
+  width: 320px;
+  border: 1px solid var(--blue);
+  border-radius: 50%;
+  z-index: 10;
+  /* background-color: var(--black80); */
+}
+
+.button__radial_bg {
+  position: absolute;
+  height: 320px;
+  width: 320px;
+  border-radius: 50%;
+  z-index: 5;
+  background-color: var(--black80);
+}
+
+.button__radial:active {
+  background: radial-gradient(circle, var(--blue10) 0%, rgba(255,255,255,0) 75%);
+}

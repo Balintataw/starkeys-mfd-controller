@@ -1,0 +1,25 @@
+.mobi_button__circle {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid var(--blue);
+  border-radius: 50%;
+  padding: 8px;
+  height: 65px;
+  width: 65px;
+  background-color: var(--black80);
+}
+.mobi_button__circle:active {
+  background-color: var(--blue10);
+}
+.mobi_button__grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  column-gap: 3px;
+  row-gap: 3px;
+}
+.mobi_button__block {
+  border: 1px solid var(--blue);
+  height: 8px;
+  width: 12px;
+}
