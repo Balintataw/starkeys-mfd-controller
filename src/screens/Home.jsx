@@ -1,13 +1,15 @@
 import React, { useContext, useEffect, useState } from 'react'
 import { useMediaQuery } from 'react-responsive'
 
-import { conn } from '../client2server'
-import { Footer } from '../components/footer/Footer'
-
-import { Header } from '../components/header/Header'
 import { ConnectionModal } from '../components/modals/ConnectionModal'
-import { store, types } from '../store'
+import { Footer } from '../components/footer/Footer'
+import { Header } from '../components/header/Header'
+
 import { FlightTab } from '../tabs/flight/Flight'
+import { MiningTab } from '../tabs/mining/Mining'
+
+import { conn } from '../client2server'
+import { store, types } from '../store'
 
 import styles from './Home.module.css'
 
@@ -50,6 +52,7 @@ export const Home = () => {
 
       <div className={styles.content}>
         {tab === 0 && <FlightTab />}
+        {tab === 3 && <MiningTab />}
       </div>
 
       <Footer />

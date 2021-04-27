@@ -5,7 +5,7 @@
   border: 1px solid var(--blue);
   border-radius: 50%;
   z-index: 10;
-  /* background-color: var(--black80); */
+  background-color: var(--black80);
 }
 
 .button__radial_bg {

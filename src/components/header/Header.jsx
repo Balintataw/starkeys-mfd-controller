@@ -20,7 +20,9 @@ export const Header = ({ onTabSelect }) => {
   return (
     <header className={styles.header}>
       <div className={styles.header__top}>
-        <div className={styles.header__quadrant}>left</div>
+        <div className={styles.header__quadrant}>
+          <BlockButton onClick={() => handleClick(3)}>MINING</BlockButton>
+        </div>
         <div className={styles.header__quadrant}>
           <img src={Logo} alt="logo" style={{ height: '32px', width: '32px' }} />
           <img src={Logo} alt="logo" style={{ height: '32px', width: '32px' }} />

@@ -1,5 +1,7 @@
 .block_button {
   display: flex;
+  width: 100%;
+  min-width: 100px;
   align-items: center;
   justify-content: center;
   border: 1px solid var(--blue);
