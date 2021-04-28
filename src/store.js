@@ -1,6 +1,8 @@
 import React, { createContext, useReducer } from 'react'
+import { THEMES } from './themes'
 
 const initialState = {
+  theme: THEMES.drake,
   hostip: '',
   fileid: '',
   serverCheck: true,
@@ -23,6 +25,9 @@ export const StateProvider = ({ children }) => {
       case types.setServerCheck:
         currentState.serverCheck = action.payload
         return currentState
+      case types.setTheme:
+        currentState.theme = action.payload
+        return currentState
       default:
         throw new Error('Unsupported action type')
     }
@@ -34,5 +39,6 @@ export const StateProvider = ({ children }) => {
 export const types = Object.freeze({
   setHostIP: 'SET_HOSTIP',
   setFileId: 'SET_FILEID',
-  setServerCheck: 'SET_SERVER_CHECK'
+  setServerCheck: 'SET_SERVER_CHECK',
+  setTheme: 'SET_THEME',
 })

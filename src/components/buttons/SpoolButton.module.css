@@ -1,15 +1,22 @@
 .button__radial {
   position: absolute;
+  top: 0;
+  left: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   height: 320px;
   width: 320px;
-  border: 1px solid var(--blue);
+  border: 1px solid var(--primary);
   border-radius: 50%;
   z-index: 10;
   background-color: var(--black80);
+  font-size: 36px;
+  text-align: center;
 }
 
 .button__radial_bg {
-  position: absolute;
+  position: relative;
   height: 320px;
   width: 320px;
   border-radius: 50%;
@@ -18,5 +25,5 @@
 }
 
 .button__radial:active {
-  background: radial-gradient(circle, var(--blue10) 0%, rgba(255,255,255,0) 75%);
+  background: radial-gradient(circle, var(--primary10) 0%, rgba(255,255,255,0) 75%);
 }

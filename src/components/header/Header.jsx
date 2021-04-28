@@ -1,4 +1,4 @@
-import React, { useContext } from 'react'
+import React, { useContext, useState } from 'react'
 
 import { MobiButton } from '../mobiButton/MobiButton'
 
@@ -10,8 +10,14 @@ import { conn } from '../../client2server'
 import styles from './Header.module.css'
 import { BlockButton } from '../buttons/BlockButton'
 
-export const Header = ({ onTabSelect }) => {
-  const { state, dispatch } = useContext(store)
+export const HEADER_TABS = Object.freeze({
+  'MINING': 'mining',
+  'FLIGHT': 'flight',
+  'VEHICLE': 'vehicle',
+  'COMBAT': 'combat',
+})
+
+export const Header = ({ onTabSelect, currentTab }) => {
 
   function handleClick(t) {
     onTabSelect(t)
@@ -21,12 +27,10 @@ export const Header = ({ onTabSelect }) => {
     <header className={styles.header}>
       <div className={styles.header__top}>
         <div className={styles.header__quadrant}>
-          <BlockButton onClick={() => handleClick(3)}>MINING</BlockButton>
+          <BlockButton selected={currentTab === HEADER_TABS.MINING} onClick={() => handleClick(HEADER_TABS.MINING)}>MINING</BlockButton>
         </div>
         <div className={styles.header__quadrant}>
-          <img src={Logo} alt="logo" style={{ height: '32px', width: '32px' }} />
-          <img src={Logo} alt="logo" style={{ height: '32px', width: '32px' }} />
-          <img src={Logo} alt="logo" style={{ height: '32px', width: '32px' }} />
+          <BlockButton selected={currentTab === HEADER_TABS.VEHICLE} onClick={() => handleClick(HEADER_TABS.VEHICLE)}>VEHICLE</BlockButton>
         </div>
       </div>
       {/* <div className={styles.header__center}>
@@ -34,10 +38,10 @@ export const Header = ({ onTabSelect }) => {
       </div> */}
       <div className={styles.header__bottom}>
         <div className={styles.header__quadrant}>
-          <BlockButton onClick={() => handleClick(0)}>FLIGHT</BlockButton>
+          <BlockButton selected={currentTab === HEADER_TABS.FLIGHT} onClick={() => handleClick(HEADER_TABS.FLIGHT)}>FLIGHT</BlockButton>
         </div>
         <div className={styles.header__quadrant}>
-          <BlockButton onClick={() => handleClick(1)}>SYSTEMS</BlockButton>
+          <BlockButton selected={currentTab === HEADER_TABS.COMBAT} onClick={() => handleClick(HEADER_TABS.COMBAT)}>COMBAT</BlockButton>
         </div>
       </div>
     </header>

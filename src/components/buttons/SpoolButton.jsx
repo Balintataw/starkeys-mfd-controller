@@ -7,8 +7,10 @@ export const SpoolButton = ({ onClick }) => {
 
   return (
     <>
-      <div className={styles.button__radial_bg} style={{ transform: `scale(${isMobileDevice ? 0.7 : 1})`}}>
-        <div className={styles.button__radial}></div>
+      <div className={styles.button__radial_bg} style={{ transform: `scale(${isMobileDevice ? 0.9 : 1})`}}>
+        <div className={styles.button__radial}>
+          ENGAGE QUANTUM
+        </div>
       </div>
     </>
   )

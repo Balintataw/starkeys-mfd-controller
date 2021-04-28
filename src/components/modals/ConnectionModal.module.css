@@ -14,7 +14,7 @@
 .modal_card {
   display: flex;
   flex-direction: column;
-  border: 1px solid var(--blue);
+  border: 1px solid var(--primary);
   border-radius: 20px;
   padding: 20px;
   z-index: 900;

@@ -2,11 +2,12 @@ import React, { useContext, useEffect, useState } from 'react'
 import { useMediaQuery } from 'react-responsive'
 
 import { ConnectionModal } from '../components/modals/ConnectionModal'
+import { Header, HEADER_TABS } from '../components/header/Header'
 import { Footer } from '../components/footer/Footer'
-import { Header } from '../components/header/Header'
 
 import { FlightTab } from '../tabs/flight/Flight'
 import { MiningTab } from '../tabs/mining/Mining'
+import { CombatTab } from '../tabs/combat/Combat'
 
 import { conn } from '../client2server'
 import { store, types } from '../store'
@@ -16,9 +17,19 @@ import styles from './Home.module.css'
 export const Home = () => {
   const { state, dispatch } = useContext(store)
 
-  const [tab, setTab] = useState(0)
+  const [tab, setTab] = useState(null)
 
   const WindowLocationSearch = window.location.search
+
+  const setCSSVariables = (theme) => {
+    for (const value in theme) {
+      document.documentElement.style.setProperty(`--${value}`, theme[value]);
+    }
+  };
+
+  useEffect(() => {
+    setCSSVariables(state.theme)
+  }, [state.theme])
 
   useEffect(() => {
     const findGetParameter = () => {
@@ -48,11 +59,12 @@ export const Home = () => {
   return (
     <div className={styles.home}>
 
-      <Header serverCheck={state.serverCheck} onTabSelect={onTabSelect}></Header>
+      <Header serverCheck={state.serverCheck} onTabSelect={onTabSelect} currentTab={tab} ></Header>
 
       <div className={styles.content}>
-        {tab === 0 && <FlightTab />}
-        {tab === 3 && <MiningTab />}
+        {tab === HEADER_TABS.FLIGHT && <FlightTab />}
+        {tab === HEADER_TABS.MINING && <MiningTab />}
+        {tab === HEADER_TABS.COMBAT && <CombatTab />}
       </div>
 
       <Footer />
