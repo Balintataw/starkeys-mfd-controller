@@ -1,3 +1,5 @@
+/* eslint-disable prettier/prettier */
+/* eslint-disable */
 /*!
  * Graph 2D Library 1.0.0
  * https://github.com/borgboyone/Graph
@@ -10,57 +12,59 @@
  */
 
 (function() {
-  "use strict";
-  
-  var root = this;
-  root.aw = root.aw || {};
-  root.aw.Graph = root.aw.Graph || {};
-  
-  root.aw.Graph.version = '1.0.0';
-  
-  function _isComplex(vertices) {
-    for (var i = 0; i < vertices.length - 2; i++) {
-      for (var j = i + 2; j < vertices.length; j++) {
-        if ((j + 1) % vertices.length == i) continue;
-        var ls1 = new LineSegment(vertices[i], vertices[i+1]),
-          ls2 = new LineSegment(vertices[j], vertices[(j+1) % vertices.length]);
-        if (ls1.intersects(ls2)) return true;
+  const root = this
+  root.aw = root.aw || {}
+  root.aw.Graph = root.aw.Graph || {}
+
+  root.aw.Graph.version = '1.0.0'
+
+  function isComplex(vertices) {
+    for (let i = 0; i < vertices.length - 2; i++) {
+      for (let j = i + 2; j < vertices.length; j++) {
+        if ((j + 1) % vertices.length === i) continue
+        const ls1 = new LineSegment(vertices[i], vertices[i + 1])
+        const ls2 = new LineSegment(
+          vertices[j],
+          vertices[(j + 1) % vertices.length],
+        )
+        if (ls1.intersects(ls2)) return true
       }
     }
-    return false;
+    return false
   }
-  
-  var Polygon = root.aw.Graph.Polygon =
+
+  const Polygon = root.aw.Graph.Polygon =
     (function() {
       function Polygon(vertices) {
-        if (!Array.isArray(vertices)) throw new Error("Parameter 1 (vertices) must be an array");
-        vertices.forEach(function(vertex) {
-          if (!Point.isInstance(vertex)) throw new Error("Parameter 1 (vertices) must be an array of Point");
-        });
+        if (!Array.isArray(vertices)) throw new Error("Parameter 1 (vertices) must be an array")
+        vertices.forEach((vertex) => {
+          if (!Point.isInstance(vertex))
+            throw new Error('Parameter 1 (vertices) must be an array of Point')
+        })
         if (vertices.length < 3) throw new Error("At least three vertices are required for a Polygon");
-        if (_isComplex(vertices)) throw new Error("Complex polygons are not supported");
+        if (isComplex(vertices)) throw new Error("Complex polygons are not supported");
         this.vertices = vertices;
       }
-      var objectProto = {
+      const objectProto = {
         // an iterator for the points would be nice
-        isConvex: function() {
+        isConvex() {
           if (this.vertices.length < 4) return true;
-          var sign = false,
-            d1 = new Point(0, 0),
-            d2 = new Point(0, 0);
+          let sign = false;
+          const d1 = new Point(0, 0);
+          const d2 = new Point(0, 0);
   
           // while, do/while might be better
-          for (var i = 0; i < this.vertices.length; i++) {
+          for (let i = 0; i < this.vertices.length; i++) {
             d1.x = this.vertices[(i + 2) % this.vertices.length].x - this.vertices[(i + 1) % this.vertices.length].x;
             d1.y = this.vertices[(i + 2) % this.vertices.length].y - this.vertices[(i + 1) % this.vertices.length].y;
             d2.x = this.vertices[i].x - this.vertices[(i + 1) % 0].x;
             d2.y = this.vertices[i].y - this.vertices[(i + 1) % 0].y;
-            var crossProduct = d1.x * d2.y - d1.y * d2.x;
+            const crossProduct = d1.x * d2.y - d1.y * d2.x;
             // clean this up!
             if (i === 0) {
-              sign = crossProduct > 0;
+              sign = crossProduct > 0
             } else if (sign !== (crossProduct > 0)) {
-              return false;
+              return false
             }
           }
           return true;

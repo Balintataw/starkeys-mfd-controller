@@ -6,12 +6,10 @@
   width: 80%;
 }
 
-.bottom_row {
+.row {
   display: flex;
-  align-items: center;
-  height: 70px;
-  width: 80%;
-  border: 1px solid var(--primary);
+  width: 100%;
+  margin-bottom: 8px;
 }
 
 .content__rows_container {

@@ -1,0 +1,330 @@
+{
+  "fileid": {
+    "value": "1",
+    "description": "This is for StarCitizen 3.13 alpha"
+  },
+  "DefaultKeyHoldTimer": {
+    "value": "1",
+    "description": "Default Key Hold Timer"
+  },
+  "DefaultKeyDelayTimer": {
+    "value": "20",
+    "description": "Default Key Delay Timer"
+  },
+  "macro1": {
+    "value": "{F1}",
+    "description": "Mobi Glass"
+  },
+  "macro2": {
+    "value": "{F2}",
+    "description": "Star Map"
+  },
+  "macro3": {
+    "value": "{F4}",
+    "description": "Cycle Cam View"
+  },
+  "macro76": {
+    "value": "+2{F4}",
+    "description": "Advanced Cam View"
+  },
+  "macro4": {
+    "value": "{F5}",
+    "description": "Power to Engines"
+  },
+  "macro5": {
+    "value": "{F6}",
+    "description": "Power to shields"
+  },
+  "macro6": {
+    "value": "{F7}",
+    "description": "Power to Weapons"
+  },
+  "macro7": {
+    "value": "{F8}",
+    "description": "Power Reset"
+  },
+  "macro39": {
+    "value": "{F9}",
+    "description": "Decrease Power"
+  },
+  "macro71": {
+    "value": "{F10}",
+    "description": "Increase Power"
+  },
+  "macro8": {
+    "value": "{F11}",
+    "description": "Comm's"
+  },
+  "macro72": {
+    "value": "{F12}",
+    "description": "Chat Window"
+  },
+  "macro9": {
+    "value": "{TAB}",
+    "description": "Scanning Mode"
+  },
+  "macro10": {
+    "value": "R",
+    "description": "Cockpit Flight Ready"
+  },
+  "macro73": {
+    "value": "{EQUALS}",
+    "description": "Helmet Toggle"
+  },
+  "macro74": {
+    "value": "[{LALT}X]",
+    "description": "Helmet Visor Wipe"
+  },
+  "macro75": {
+    "value": "[{LALT}J]",
+    "description": "Jettison Cargo"
+  },
+  "macro11": {
+    "value": "L",
+    "description": "Cockpit Toggle Lights"
+  },
+  "macro12": {
+    "value": "+3Y",
+    "description": "Exit Seat"
+  },
+  "macro13": {
+    "value": "[{RALT}Y]",
+    "description": "Cockpit Eject"
+  },
+  "macro14": {
+    "value": "U",
+    "description": "Cockpit Power on/off"
+  },
+  "macro15": {
+    "value": "I",
+    "description": "Cockpit Engines on/off"
+  },
+  "macro16": {
+    "value": "O",
+    "description": "Cockpit Shields on/off"
+  },
+  "macro17": {
+    "value": "P",
+    "description": "Cockpit Weapons on/off"
+  },
+  "macro18": {
+    "value": "H",
+    "description": "Launch Decoy CM"
+  },
+  "macro19": {
+    "value": "J",
+    "description": "Launch Noise CM"
+  },
+  "macro20": {
+    "value": "K",
+    "description": "Toggle VTOL"
+  },
+  "macro21": {
+    "value": "{SINGLEQUOTE}",
+    "description": "Doors open/close"
+  },
+  "macro22": {
+    "value": "{SEMICOLON}",
+    "description": "Doors lock/unlock"
+  },
+  "macro23": {
+    "value": "C",
+    "description": "Cruise Control"
+  },
+  "macro24": {
+    "value": "V",
+    "description": "Decoupled Mode"
+  },
+  "macro25": {
+    "value": "B",
+    "description": "Quantum Spool"
+  },
+  "macro26": {
+    "value": "+3B",
+    "description": "Quantum Engage"
+  },
+  "macro27": {
+    "value": "N",
+    "description": "Landing Gear"
+  },
+  "macro28": {
+    "value": "+3N",
+    "description": "Auto Land"
+  },
+  "macro29": {
+    "value": "M",
+    "description": "Mining Mode"
+  },
+  "macro30": {
+    "value": "{NUMPAD2}",
+    "description": "Shields Rear"
+  },
+  "macro31": {
+    "value": "{NUMPAD4}",
+    "description": "Shields Left"
+  },
+  "macro32": {
+    "value": "{NUMPAD5}",
+    "description": "Shields Balance"
+  },
+  "macro33": {
+    "value": "{NUMPAD6}",
+    "description": "Shields Right"
+  },
+  "macro34": {
+    "value": "{NUMPAD7}",
+    "description": "Shields Top"
+  },
+  "macro35": {
+    "value": "{NUMPAD8}",
+    "description": "Shields Front"
+  },
+  "macro36": {
+    "value": "{NUMPAD9}",
+    "description": "Shields Bottom"
+  },
+  "macro37": {
+    "value": "+5{RMOUSEBUTTON}",
+    "description": "Ping"
+  },
+  "macro38": {
+    "value": "+5{BACK}",
+    "description": "Self Destruct"
+  },
+  "macro40": {
+    "value": "R",
+    "description": "Gimbal Mode"
+  },
+  "macro41": {
+    "value": "X",
+    "description": "Spacebrake /Stop Ship"
+  },
+  "macro42": {
+    "value": "E",
+    "description": "Turret ESP Toggle"
+  },
+  "macro43": {
+    "value": "Q",
+    "description": "Turret Toggle Mouse Movement"
+  },
+  "macro44": {
+    "value": "+3C",
+    "description": "Turret Recenter"
+  },
+  "macro45": {
+    "value": "G",
+    "description": "Turret Gyro Stabilization"
+  },
+  "macro46": {
+    "value": "{LSHIFT}",
+    "description": "Turret Speed Limiter Toggle"
+  },
+  "macro47": {
+    "value": "W",
+    "description": "Turret Velocity Limiter Increase"
+  },
+  "macro48": {
+    "value": "S",
+    "description": "Turret Velocity Limiter Decrease"
+  },
+  "macro49": {
+    "value": "V",
+    "description": "Turret Cycle Fire Mode"
+  },
+  "macro50": {
+    "value": "+3Y",
+    "description": "Turret Exit Seat"
+  },
+  "macro51": {
+    "value": "1",
+    "description": "Targeting Pin 1 Lock/Unlock"
+  },
+  "macro52": {
+    "value": "2",
+    "description": "Targeting Pin 2 Lock/Unlock"
+  },
+  "macro53": {
+    "value": "3",
+    "description": "Targeting Pin 3 Lock/Unlock"
+  },
+  "macro54": {
+    "value": "[{LALT}1]",
+    "description": "Targeting Pin 1 Selected Target"
+  },
+  "macro55": {
+    "value": "[{LALT}2]",
+    "description": "Targeting Pin 2 Selected Target"
+  },
+  "macro56": {
+    "value": "[{LALT}3]",
+    "description": "Targeting Pin 2 Selected Target"
+  },
+  "macro57": {
+    "value": "O",
+    "description": "Targeting Clear All Pins"
+  },
+  "macro58": {
+    "value": "[{LALT}T]",
+    "description": "Targeting Unlock Locked Target"
+  },
+  "macro59": {
+    "value": "[{LALT}L]",
+    "description": "Targeting Enable/Disable Lookahead"
+  },
+  "macro60": {
+    "value": "T",
+    "description": "Targeting Lock Under Reticle"
+  },
+  "macro61": {
+    "value": "4",
+    "description": "Targeting Cycle Attackers Forward"
+  },
+  "macro62": {
+    "value": "[{LALT}4]",
+    "description": "Targeting Attackers Reset Closest"
+  },
+  "macro63": {
+    "value": "5",
+    "description": "Targeting Cycle Hostiles Forward"
+  },
+  "macro64": {
+    "value": "[{LALT}5]",
+    "description": "Targeting Hostiles Reset Closest"
+  },
+  "macro65": {
+    "value": "6",
+    "description": "Targeting Cycle Friendlies Forward"
+  },
+  "macro66": {
+    "value": "[{LALT}6]",
+    "description": "Targeting Friendliest Reset Closest"
+  },
+  "macro67": {
+    "value": "7",
+    "description": "Targeting Cycle All Forward"
+  },
+  "macro68": {
+    "value": "[{LALT}7]",
+    "description": "Targeting All Reset Closest"
+  },
+  "macro69": {
+    "value": "8",
+    "description": "Targeting SubTarget Cycle Forward"
+  },
+  "macro70": {
+    "value": "[{LALT}8]",
+    "description": "Targeting SubTarget Reset To Main"
+  },
+  "macro99": {
+    "value": "[{LWIN}R]NOTEPAD{RETURN}HELLO",
+    "description": "Notepad"
+  },
+  "run1": {
+    "value": "c:\\Users\\someone\\somthing.bat",
+    "description": "Run this bat file"
+  },
+  "run2": {
+    "value": "runtest.bat",
+    "description": "Run this bat file 2"
+  }
+}

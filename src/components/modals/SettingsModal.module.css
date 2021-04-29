@@ -12,12 +12,37 @@
 }
 
 .modal_card {
+  position: relative;
   display: flex;
   flex-direction: column;
+  background-color: var(--black80);
   border: 1px solid var(--primary);
   border-radius: 20px;
   padding: 20px;
   z-index: 900;
+}
+
+.close_button {
+  margin-left: auto;
+  padding: 8px;
+  background-color: var(--black80);
+  border: none;
+  color: var(--primary);
+}
+
+.themes_wrapper {
+  display: flex;
+  flex-wrap: wrap;
+  padding: 8px 0;
+}
+
+.theme_button {
+  padding: 8px;
+  border: 1px solid var(--primary);
+  border-radius: 20px;
+  margin-right: 24px;
+  background-color: var(--black80);
+  color: var(--primary);
 }
 
 .label {

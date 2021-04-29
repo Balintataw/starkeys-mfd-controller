@@ -1,0 +1,17 @@
+.bottom_row {
+  display: flex;
+  align-items: center;
+  height: 70px;
+  width: 100%;
+}
+
+.row {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  margin: 4px 0px;
+}
+
+.h_spacer {
+  width: 8px;
+}

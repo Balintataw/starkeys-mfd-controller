@@ -13,6 +13,7 @@
   background-color: var(--black80);
   font-size: 36px;
   text-align: center;
+  color: var(--primary);
 }
 
 .button__radial_bg {
@@ -22,8 +23,14 @@
   border-radius: 50%;
   z-index: 5;
   background-color: var(--black80);
+  border: none;
+  outline: none;
 }
 
 .button__radial:active {
-  background: radial-gradient(circle, var(--primary10) 0%, rgba(255,255,255,0) 75%);
+  background: radial-gradient(
+    circle,
+    var(--primary10) 0%,
+    rgba(255, 255, 255, 0) 75%
+  );
 }

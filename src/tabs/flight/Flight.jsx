@@ -8,18 +8,19 @@ import { conn } from '../../client2server'
 import { store } from '../../store'
 
 import styles from './Flight.module.css'
+import { PowerBlock } from '../../components/powerBlock/PowerBlock'
 
 const FLIGHT_TABS = Object.freeze({
-  'SYSTEMS': 'systems',
-  'QUANTUM': 'quantum',
-  'FUNCTIONS': 'functions'
+  SYSTEMS: 'systems',
+  QUANTUM: 'quantum',
+  FUNCTIONS: 'functions',
 })
 
 export const FlightTab = () => {
-  const { state, dispatch } = useContext(store)
+  const { state } = useContext(store)
   const isMobileDevice = useMediaQuery({ maxDeviceWidth: 440 })
 
-  const [tab, setTab] = useState(0)
+  const [tab, setTab] = useState(FLIGHT_TABS.SYSTEMS)
 
   function send(macro) {
     conn(state.hostip, state.fileid, macro)
@@ -28,61 +29,94 @@ export const FlightTab = () => {
   return (
     <>
       <div className={styles.top_row}>
-        <BlockButton selected={tab === FLIGHT_TABS.SYSTEMS} onClick={() => setTab(FLIGHT_TABS.SYSTEMS)}>SYSTEMS</BlockButton>
-        <BlockButton style={{ margin: '0 12px' }} selected={tab === FLIGHT_TABS.QUANTUM} onClick={() => setTab(FLIGHT_TABS.QUANTUM)}>QUANTUM</BlockButton>
-        <BlockButton selected={tab === FLIGHT_TABS.FUNCTIONS} onClick={() => setTab(FLIGHT_TABS.FUNCTIONS)}>FUNCTIONS</BlockButton>
+        <BlockButton
+          selected={tab === FLIGHT_TABS.SYSTEMS}
+          onClick={() => setTab(FLIGHT_TABS.SYSTEMS)}>
+          SYSTEMS
+        </BlockButton>
+        <BlockButton
+          style={{ margin: '0 12px' }}
+          selected={tab === FLIGHT_TABS.QUANTUM}
+          onClick={() => setTab(FLIGHT_TABS.QUANTUM)}>
+          QUANTUM
+        </BlockButton>
+        <BlockButton
+          selected={tab === FLIGHT_TABS.FUNCTIONS}
+          onClick={() => setTab(FLIGHT_TABS.FUNCTIONS)}>
+          FUNCTIONS
+        </BlockButton>
       </div>
 
       {tab === FLIGHT_TABS.SYSTEMS && (
         <>
           <div className={styles.content__rows_container}>
             <div className={styles.row}>
-              <BlockButton onClick={() => send('macro10')}>FLIGHT READY</BlockButton>
+              <BlockButton onClick={() => send('macro:10')}>
+                FLIGHT READY
+              </BlockButton>
             </div>
 
             <div className={styles.row}>
-              <BlockButton onClick={() => send('macro10')}>LANDING GEAR</BlockButton>
-              <div className={styles.h_spacer}></div>
-              <BlockButton onClick={() => send('macro10')}>AUTO LAND</BlockButton>
+              <BlockButton onClick={() => send('macro:27')}>
+                LANDING GEAR
+              </BlockButton>
+              <div className={styles.h_spacer} />
+              <BlockButton onClick={() => send('macro:28')}>
+                AUTO LAND
+              </BlockButton>
             </div>
 
             <div className={styles.row}>
-              <BlockButton onClick={() => send('macro10')}>ENGAGE QUANTUM</BlockButton>
+              <BlockButton onClick={() => send('macro:26')}>
+                ENGAGE QUANTUM
+              </BlockButton>
             </div>
 
             <div className={styles.row}>
-              <BlockButton onClick={() => send('macro10')}>INITIATE SPOOL</BlockButton>
-              <div className={styles.h_spacer}></div>
-              <BlockButton onClick={() => send('macro10')}>SCANNING</BlockButton>
+              <BlockButton onClick={() => send('macro:25')}>
+                INITIATE SPOOL
+              </BlockButton>
+              <div className={styles.h_spacer} />
+              <BlockButton onClick={() => send('macro:9')}>
+                SCANNING
+              </BlockButton>
             </div>
 
             <div className={styles.row}>
-              <BlockButton onClick={() => send('macro10')}>LIGHTS</BlockButton>
-              <div className={styles.h_spacer}></div>
-              <BlockButton onClick={() => send('macro10')}>EXIT SEAT</BlockButton>
+              <BlockButton onClick={() => send('macro:11')}>LIGHTS</BlockButton>
+              <div className={styles.h_spacer} />
+              <BlockButton onClick={() => send('macro:12')}>
+                EXIT SEAT
+              </BlockButton>
             </div>
 
             <div className={styles.row}>
-              <BlockButton onClick={() => send('macro10')} style={{ minWidth: '25%' }}>OPEN DOORS</BlockButton>
-              <div className={styles.h_spacer}></div>
-              <BlockButton onClick={() => send('macro10')} style={{ minWidth: '25%' }}>CLOSE DOORS</BlockButton>
-              <div className={styles.h_spacer}></div>
-              <BlockButton onClick={() => send('macro10')} style={{ minWidth: '25%', height: '100%' }}>LOCK</BlockButton>
-              <div className={styles.h_spacer}></div>
-              <BlockButton onClick={() => send('macro10')} style={{ minWidth: '25%', height: '100%' }}>UNLOCK</BlockButton>
+              <BlockButton
+                onClick={() => send('macro:21')}
+                style={{ minWidth: '25%' }}>
+                OPEN DOORS
+              </BlockButton>
+              <div className={styles.h_spacer} />
+              <BlockButton
+                onClick={() => send('macro:21')}
+                style={{ minWidth: '25%' }}>
+                CLOSE DOORS
+              </BlockButton>
+              <div className={styles.h_spacer} />
+              <BlockButton
+                onClick={() => send('macro:22')}
+                style={{ minWidth: '25%', height: '100%' }}>
+                LOCK
+              </BlockButton>
+              <div className={styles.h_spacer} />
+              <BlockButton
+                onClick={() => send('macro:22')}
+                style={{ minWidth: '25%', height: '100%' }}>
+                UNLOCK
+              </BlockButton>
             </div>
           </div>
-          <div className={styles.bottom_row}>
-            <div className={styles.row}>
-              <BlockButton onClick={() => send('macro10')} style={{ minWidth: '25%' }}>POWER</BlockButton>
-              <div className={styles.h_spacer}></div>
-              <BlockButton onClick={() => send('macro10')} style={{ minWidth: '25%' }}>SHIELDS</BlockButton>
-              <div className={styles.h_spacer}></div>
-              <BlockButton onClick={() => send('macro10')} style={{ minWidth: '25%', height: '100%' }}>ENGINES</BlockButton>
-              <div className={styles.h_spacer}></div>
-              <BlockButton onClick={() => send('macro10')} style={{ minWidth: '25%', height: '100%' }}>WEAPONS</BlockButton>
-            </div>
-          </div>
+          <PowerBlock />
         </>
       )}
 
@@ -91,49 +125,85 @@ export const FlightTab = () => {
           <div className={styles.content__rows_container}>
             {isMobileDevice ? (
               <div style={{ position: 'relative' }}>
-                <SpoolButton onClick={() => send('macro26')}/>
-                <div style={{
-                  position: 'absolute',
-                  bottom: '-20px',
-                  height: '80px',
-                  width: '100%',
-                  backgroundColor: 'var(--black80)',
-                  zIndex: 20,
-                }}>
-                  <BlockButton style={{ height: '100%' }} onClick={() => send('macro25')}>INITIATE SPOOL</BlockButton>
+                <SpoolButton onClick={() => send('macro:26')} />
+                <div
+                  style={{
+                    position: 'absolute',
+                    bottom: '-20px',
+                    height: '80px',
+                    width: '100%',
+                    backgroundColor: 'var(--black80)',
+                    zIndex: 20,
+                  }}>
+                  <BlockButton
+                    style={{ height: '100%' }}
+                    onClick={() => send('macro:25')}>
+                    INITIATE SPOOL
+                  </BlockButton>
                 </div>
               </div>
             ) : (
               <>
                 <div className={styles.content__row}>
-                  <div className={styles.content__row_left} onClick={() => send('macro10')}>FLIGHT READY</div>
-                  <div className={styles.content__row_right} onClick={() => {}}>right</div>
+                  <button
+                    className={styles.content__row_left}
+                    onClick={() => send('macro:10')}>
+                    FLIGHT READY
+                  </button>
+                  <button
+                    className={styles.content__row_right}
+                    onClick={() => {}}>
+                    right
+                  </button>
                 </div>
                 <div className={styles.content__row}>
-                  <div className={styles.content__row_left} onClick={() => {}}>left</div>
-                  <div className={styles.content__row_right} onClick={() => {}}>right</div>
+                  <button
+                    className={styles.content__row_left}
+                    onClick={() => {}}>
+                    left
+                  </button>
+                  <button
+                    className={styles.content__row_right}
+                    onClick={() => {}}>
+                    right
+                  </button>
                 </div>
                 <div className={styles.content__row}>
-                  <div className={styles.content__row_left} onClick={() => {}}>left</div>
-                  <div className={styles.content__row_right} onClick={() => {}}>right</div>
+                  <button
+                    className={styles.content__row_left}
+                    onClick={() => {}}>
+                    left
+                  </button>
+                  <button
+                    className={styles.content__row_right}
+                    onClick={() => {}}>
+                    right
+                  </button>
                 </div>
 
-                <SpoolButton onClick={() => null}/>
+                <div style={{ position: 'absolute' }}>
+                  <SpoolButton onClick={() => send('macro:26')} />
+                  <div
+                    style={{
+                      position: 'absolute',
+                      bottom: '-20px',
+                      height: '80px',
+                      width: '100%',
+                      backgroundColor: 'var(--black80)',
+                      zIndex: 20,
+                    }}>
+                    <BlockButton
+                      style={{ height: '100%' }}
+                      onClick={() => send('macro:25')}>
+                      INITIATE SPOOL
+                    </BlockButton>
+                  </div>
+                </div>
               </>
             )}
           </div>
 
-          <div className={styles.bottom_row}>
-            <div className={styles.row}>
-              <BlockButton onClick={() => send('macro10')} style={{ minWidth: '25%' }}>POWER</BlockButton>
-              <div className={styles.h_spacer}></div>
-              <BlockButton onClick={() => send('macro10')} style={{ minWidth: '25%' }}>SHIELDS</BlockButton>
-              <div className={styles.h_spacer}></div>
-              <BlockButton onClick={() => send('macro10')} style={{ minWidth: '25%', height: '100%' }}>ENGINES</BlockButton>
-              <div className={styles.h_spacer}></div>
-              <BlockButton onClick={() => send('macro10')} style={{ minWidth: '25%', height: '100%' }}>WEAPONS</BlockButton>
-            </div>
-          </div>
+          <PowerBlock />
         </>
       )}
 
@@ -141,50 +211,69 @@ export const FlightTab = () => {
         <>
           <div className={styles.content__rows_container}>
             <div className={styles.row}>
-              <BlockButton onClick={() => send('macro10')}>CYCLE CAMERA</BlockButton>
-              <div className={styles.h_spacer}></div>
-              <BlockButton onClick={() => send('macro10')}>VTOL</BlockButton>
+              <BlockButton onClick={() => send('macro:3')}>
+                CYCLE CAMERA
+              </BlockButton>
+              <div className={styles.h_spacer} />
+              <BlockButton onClick={() => send('macro:20')}>VTOL</BlockButton>
             </div>
 
             <div className={styles.row}>
-              <BlockButton onClick={() => send('macro10')}>LIMITER TOGGLE</BlockButton>
-              <div className={styles.h_spacer}></div>
-              <BlockButton onClick={() => send('macro10')}>CRUISE CONTROL</BlockButton>
+              <BlockButton onClick={() => send('macro10')}>
+                LIMITER TOGGLE*
+              </BlockButton>
+              <div className={styles.h_spacer} />
+              <BlockButton onClick={() => send('macro:23')}>
+                CRUISE CONTROL
+              </BlockButton>
             </div>
 
             <div className={styles.row}>
-              <BlockButton onClick={() => send('macro10')}>SELF DESTRUCT</BlockButton>
+              <BlockButton danger onClick={() => send('macro:38')}>
+                SELF DESTRUCT
+              </BlockButton>
             </div>
 
             <div className={styles.row}>
-              <BlockButton onClick={() => send('macro10')}>EJECT</BlockButton>
+              <BlockButton danger onClick={() => send('macro:13')}>
+                EJECT
+              </BlockButton>
             </div>
 
             <div className={styles.row}>
-              <BlockButton onClick={() => send('macro10')}>GIMBAL MODE</BlockButton>
+              <BlockButton onClick={() => send('macro:40')}>
+                GIMBAL MODE
+              </BlockButton>
             </div>
 
             <div className={styles.row}>
-              <BlockButton onClick={() => send('macro10')} style={{ minWidth: '25%' }}>DECOUPLE</BlockButton>
-              <div className={styles.h_spacer}></div>
-              <BlockButton onClick={() => send('macro10')} style={{ minWidth: '25%' }}>GSAFE</BlockButton>
-              <div className={styles.h_spacer}></div>
-              <BlockButton onClick={() => send('macro10')} style={{ minWidth: '25%' }}>ESP</BlockButton>
-              <div className={styles.h_spacer}></div>
-              <BlockButton onClick={() => send('macro10')} style={{ minWidth: '25%' }}>WEAPONS</BlockButton>
+              <BlockButton
+                onClick={() => send('macro:24')}
+                style={{ minWidth: '25%' }}>
+                DECOUPLE
+              </BlockButton>
+              <div className={styles.h_spacer} />
+              <BlockButton
+                onClick={() => send('macro10')}
+                style={{ minWidth: '25%' }}>
+                GSAFE*
+              </BlockButton>
+              <div className={styles.h_spacer} />
+              <BlockButton
+                onClick={() => send('macro10')}
+                style={{ minWidth: '25%' }}>
+                ESP*
+              </BlockButton>
+              <div className={styles.h_spacer} />
+              <BlockButton
+                onClick={() => send('macro10')}
+                style={{ minWidth: '25%' }}>
+                WEAPONS*
+              </BlockButton>
             </div>
           </div>
-          <div className={styles.bottom_row}>
-            <div className={styles.row}>
-              <BlockButton onClick={() => send('macro10')} style={{ minWidth: '25%' }}>POWER</BlockButton>
-              <div className={styles.h_spacer}></div>
-              <BlockButton onClick={() => send('macro10')} style={{ minWidth: '25%' }}>SHIELDS</BlockButton>
-              <div className={styles.h_spacer}></div>
-              <BlockButton onClick={() => send('macro10')} style={{ minWidth: '25%' }}>ENGINES</BlockButton>
-              <div className={styles.h_spacer}></div>
-              <BlockButton onClick={() => send('macro10')} style={{ minWidth: '25%' }}>WEAPONS</BlockButton>
-            </div>
-          </div>
+
+          <PowerBlock />
         </>
       )}
     </>
