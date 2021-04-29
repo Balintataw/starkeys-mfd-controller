@@ -35,7 +35,6 @@ export const StateProvider = ({ children }) => {
         currentState.serverCheck = action.payload
         return currentState
       case types.setTheme:
-        console.log('THEM SETTING', action.payload)
         currentState.theme = action.payload
         return currentState
       case types.settingsModal:

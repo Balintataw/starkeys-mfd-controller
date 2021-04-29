@@ -11,6 +11,10 @@ export const ConnectionModal = () => {
   const [fileId, setFileId] = useState(state.fileid)
 
   function handleConnect() {
+    if (!hostIp || !fileId) {
+      alert('Cannot be empty')
+      return
+    }
     dispatch({ type: types.setHostIP, payload: hostIp })
     dispatch({ type: types.setFileId, payload: fileId })
     dispatch({ type: types.setServerCheck, payload: true })

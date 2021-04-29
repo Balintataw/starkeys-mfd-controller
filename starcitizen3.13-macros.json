@@ -279,6 +279,10 @@
     "value": "4",
     "description": "Targeting Cycle Attackers Forward"
   },
+  "macro78": {
+    "value": "[{LCONTROL}4]",
+    "description": "Targeting Cycle Attackers Back"
+  },
   "macro62": {
     "value": "[{LALT}4]",
     "description": "Targeting Attackers Reset Closest"
@@ -286,6 +290,10 @@
   "macro63": {
     "value": "5",
     "description": "Targeting Cycle Hostiles Forward"
+  },
+  "macro77": {
+    "value": "[{LCONTROL}5]",
+    "description": "Targeting Cycle Hostiles Back"
   },
   "macro64": {
     "value": "[{LALT}5]",
@@ -295,6 +303,10 @@
     "value": "6",
     "description": "Targeting Cycle Friendlies Forward"
   },
+  "macro79": {
+    "value": "[{LCONTROL}6]",
+    "description": "Targeting Cycle Friendlies Back"
+  },
   "macro66": {
     "value": "[{LALT}6]",
     "description": "Targeting Friendliest Reset Closest"
@@ -302,6 +314,10 @@
   "macro67": {
     "value": "7",
     "description": "Targeting Cycle All Forward"
+  },
+  "macro81": {
+    "value": "[{LCONTROL}7]",
+    "description": "Targeting Cycle All Back"
   },
   "macro68": {
     "value": "[{LALT}7]",
@@ -311,9 +327,17 @@
     "value": "8",
     "description": "Targeting SubTarget Cycle Forward"
   },
+  "macro80": {
+    "value": "[{LCONTROL}8]",
+    "description": "Targeting SubTarget Cycle Back"
+  },
   "macro70": {
     "value": "[{LALT}8]",
     "description": "Targeting SubTarget Reset To Main"
+  },
+  "macro82": {
+    "value": "9",
+    "description": "Comms Hail Target"
   },
   "macro99": {
     "value": "[{LWIN}R]NOTEPAD{RETURN}HELLO",

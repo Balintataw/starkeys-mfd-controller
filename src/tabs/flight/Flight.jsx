@@ -152,32 +152,32 @@ export const FlightTab = () => {
                   </button>
                   <button
                     className={styles.content__row_right}
-                    onClick={() => {}}>
-                    right
+                    onClick={() => send('macro:27')}>
+                    LANDING GEAR
                   </button>
                 </div>
                 <div className={styles.content__row}>
                   <button
                     className={styles.content__row_left}
-                    onClick={() => {}}>
-                    left
+                    onClick={() => send('macro:9')}>
+                    SCANNING MODE
                   </button>
                   <button
                     className={styles.content__row_right}
-                    onClick={() => {}}>
-                    right
+                    onClick={() => send('macro:20')}>
+                    VTOL
                   </button>
                 </div>
                 <div className={styles.content__row}>
                   <button
                     className={styles.content__row_left}
-                    onClick={() => {}}>
-                    left
+                    onClick={() => send('macro:82')}>
+                    HAIL TARGET
                   </button>
                   <button
                     className={styles.content__row_right}
-                    onClick={() => {}}>
-                    right
+                    onClick={() => send('macro:24')}>
+                    DECOUPLE
                   </button>
                 </div>
 

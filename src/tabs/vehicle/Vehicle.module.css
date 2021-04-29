@@ -1,0 +1,42 @@
+.top_row {
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+  height: 70px;
+  width: 80%;
+}
+
+.row {
+  display: flex;
+  width: 100%;
+  margin-bottom: 8px;
+}
+
+.content__rows_container {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+}
+
+.content__row {
+  display: flex;
+  width: 100%;
+  height: 90px;
+  border: 1px solid var(--primary);
+  background: linear-gradient(
+    90deg,
+    var(--primary10) 0%,
+    rgba(255, 255, 255, 0) 50%,
+    var(--primary10) 100%
+  );
+}
+
+.content__row > div {
+  display: flex;
+  align-items: center;
+  height: 100%;
+  width: 50%;
+}

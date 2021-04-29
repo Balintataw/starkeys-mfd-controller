@@ -1,15 +1,14 @@
-/* eslint-disable react/jsx-no-duplicate-props */
 import { useContext, useLayoutEffect, useRef, useState } from 'react'
 import { useMediaQuery } from 'react-responsive'
 
 import { BlockButton } from '../../components/buttons/BlockButton'
+import { PowerBlock } from '../../components/powerBlock/PowerBlock'
 
 import { conn } from '../../client2server'
 import { store } from '../../store'
 import * as Graph from '../../Graph'
 
 import styles from './Combat.module.css'
-import { PowerBlock } from '../../components/powerBlock/PowerBlock'
 
 const COMBAT_TABS = Object.freeze({
   POWER: 'power',
@@ -18,8 +17,8 @@ const COMBAT_TABS = Object.freeze({
 })
 
 export const CombatTab = () => {
-  const { state, dispatch } = useContext(store)
-  const isMobileDevice = useMediaQuery({ maxDeviceWidth: 440 })
+  const { state } = useContext(store)
+  // const isMobileDevice = useMediaQuery({ maxDeviceWidth: 440 })
 
   const polyRef = useRef(null)
   const handleRef = useRef(null)
@@ -108,8 +107,7 @@ export const CombatTab = () => {
       {tab === COMBAT_TABS.POWER && (
         <>
           <div
-            className={styles.content__rows_container}
-            className="map"
+            className={`${styles.content__rows_container} map`}
             style={{
               width: '300px',
               height: '300px',
@@ -201,9 +199,9 @@ export const CombatTab = () => {
             </div>
             <div className={styles.row}>
               <BlockButton
-                onClick={() => send('macro10')}
+                onClick={() => send('macro:78')}
                 style={{ minWidth: '25%' }}>
-                {'<= ATTACKERS *'}
+                {'<= ATTACKERS'}
               </BlockButton>
               <div className={styles.h_spacer} />
               <BlockButton
@@ -214,9 +212,9 @@ export const CombatTab = () => {
             </div>
             <div className={styles.row}>
               <BlockButton
-                onClick={() => send('macro10')}
+                onClick={() => send('macro:77')}
                 style={{ minWidth: '25%' }}>
-                {'<= HOSTILES *'}
+                {'<= HOSTILES'}
               </BlockButton>
               <div className={styles.h_spacer} />
               <BlockButton
@@ -227,9 +225,9 @@ export const CombatTab = () => {
             </div>
             <div className={styles.row}>
               <BlockButton
-                onClick={() => send('macro10')}
+                onClick={() => send('macro:80')}
                 style={{ minWidth: '25%' }}>
-                {'<= SUB TARGETS *'}
+                {'<= SUB TARGETS'}
               </BlockButton>
               <div className={styles.h_spacer} />
               <BlockButton
@@ -240,9 +238,9 @@ export const CombatTab = () => {
             </div>
             <div className={styles.row}>
               <BlockButton
-                onClick={() => send('macro10')}
+                onClick={() => send('macro:79')}
                 style={{ minWidth: '25%' }}>
-                {'<= FRIENDLIES *'}
+                {'<= FRIENDLIES'}
               </BlockButton>
               <div className={styles.h_spacer} />
               <BlockButton
@@ -260,8 +258,7 @@ export const CombatTab = () => {
       {tab === COMBAT_TABS.SHIELDS && (
         <>
           <div
-            className={styles.content__rows_container}
-            className="map"
+            className={`${styles.content__rows_container} map`}
             style={{
               width: '300px',
               height: '300px',

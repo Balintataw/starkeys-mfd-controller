@@ -8,7 +8,7 @@ import { Footer } from '../components/footer/Footer'
 import { FlightTab } from '../tabs/flight/Flight'
 import { MiningTab } from '../tabs/mining/Mining'
 import { CombatTab } from '../tabs/combat/Combat'
-
+import { VehicleTab } from '../tabs/vehicle/Vehicle'
 
 import { store, types } from '../store'
 import { setCSSVariables } from '../helpers'
@@ -68,6 +68,7 @@ export const Home = () => {
         {tab === HEADER_TABS.FLIGHT && <FlightTab />}
         {tab === HEADER_TABS.MINING && <MiningTab />}
         {tab === HEADER_TABS.COMBAT && <CombatTab />}
+        {tab === HEADER_TABS.VEHICLE && <VehicleTab />}
       </div>
 
       <Footer />
