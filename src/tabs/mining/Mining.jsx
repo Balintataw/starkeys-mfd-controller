@@ -16,7 +16,7 @@ const MINING_TABS = Object.freeze({
 
 export const MiningTab = () => {
   const { state } = useContext(store)
-  const isMobileDevice = useMediaQuery({ maxDeviceWidth: 440 })
+  const isMobileDevice = useMediaQuery({ maxDeviceWidth: 460 })
 
   const [tab, setTab] = useState(MINING_TABS.POWER)
 

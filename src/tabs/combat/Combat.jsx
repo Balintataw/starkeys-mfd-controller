@@ -4,6 +4,9 @@ import { useMediaQuery } from 'react-responsive'
 import { BlockButton } from '../../components/buttons/BlockButton'
 import { PowerBlock } from '../../components/powerBlock/PowerBlock'
 
+import { ReactComponent as ArrowCircleRight } from '../../assets/arrow-circle-right.svg'
+import { ReactComponent as ArrowCircleLeft } from '../../assets/arrow-circle-left.svg'
+
 import { conn } from '../../client2server'
 import { store } from '../../store'
 import * as Graph from '../../Graph'
@@ -18,7 +21,7 @@ const COMBAT_TABS = Object.freeze({
 
 export const CombatTab = () => {
   const { state } = useContext(store)
-  // const isMobileDevice = useMediaQuery({ maxDeviceWidth: 440 })
+  // const isMobileDevice = useMediaQuery({ maxDeviceWidth: 460 })
 
   const polyRef = useRef(null)
   const handleRef = useRef(null)
@@ -161,7 +164,7 @@ export const CombatTab = () => {
                   </BlockButton>
                   <BlockButton
                     onClick={() => send('macro:52')}
-                    style={{ minWidth: '45px' }}>
+                    style={{ minWidth: '45px', margin: '0 8px' }}>
                     2
                   </BlockButton>
                   <BlockButton
@@ -186,7 +189,7 @@ export const CombatTab = () => {
                   </BlockButton>
                   <BlockButton
                     onClick={() => send('macro:55')}
-                    style={{ minWidth: '45px' }}>
+                    style={{ minWidth: '45px', margin: '0 8px' }}>
                     2
                   </BlockButton>
                   <BlockButton
@@ -201,52 +204,60 @@ export const CombatTab = () => {
               <BlockButton
                 onClick={() => send('macro:78')}
                 style={{ minWidth: '25%' }}>
-                {'<= ATTACKERS'}
+                <ArrowCircleLeft style={{ marginRight: '12px' }} />
+                ATTACKERS
               </BlockButton>
               <div className={styles.h_spacer} />
               <BlockButton
                 onClick={() => send('macro:61')}
                 style={{ minWidth: '25%' }}>
-                {'ATTACKERS =>'}
+                ATTACKERS
+                <ArrowCircleRight style={{ marginLeft: '12px' }} />
               </BlockButton>
             </div>
             <div className={styles.row}>
               <BlockButton
                 onClick={() => send('macro:77')}
                 style={{ minWidth: '25%' }}>
-                {'<= HOSTILES'}
+                <ArrowCircleLeft style={{ marginRight: '12px' }} />
+                HOSTILES
               </BlockButton>
               <div className={styles.h_spacer} />
               <BlockButton
                 onClick={() => send('macro:63')}
                 style={{ minWidth: '25%' }}>
-                {'HOSTILES =>'}
+                HOSTILES
+                <ArrowCircleRight style={{ marginLeft: '12px' }} />
               </BlockButton>
             </div>
             <div className={styles.row}>
               <BlockButton
                 onClick={() => send('macro:80')}
                 style={{ minWidth: '25%' }}>
-                {'<= SUB TARGETS'}
+                <ArrowCircleLeft style={{ marginRight: '12px' }} />
+                SUB TARGETS
               </BlockButton>
               <div className={styles.h_spacer} />
               <BlockButton
                 onClick={() => send('macro:69')}
                 style={{ minWidth: '25%' }}>
-                {'SUB TARGETS =>'}
+                SUB TARGETS
+                <ArrowCircleRight style={{ marginLeft: '12px' }} />
               </BlockButton>
             </div>
             <div className={styles.row}>
               <BlockButton
                 onClick={() => send('macro:79')}
                 style={{ minWidth: '25%' }}>
-                {'<= FRIENDLIES'}
+                <ArrowCircleLeft style={{ marginRight: '12px' }} />
+                FRIENDLIES
               </BlockButton>
               <div className={styles.h_spacer} />
               <BlockButton
                 onClick={() => send('macro:65')}
                 style={{ minWidth: '25%' }}>
-                {'FRIENDLIES =>'}
+                FRIENDLIES
+                <ArrowCircleRight style={{ marginLeft: '12px' }} />
               </BlockButton>
             </div>
           </div>

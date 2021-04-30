@@ -339,6 +339,14 @@
     "value": "9",
     "description": "Comms Hail Target"
   },
+  "macro83": {
+    "value": "{SPACE}",
+    "description": "Vehicle Horn"
+  },
+  "macro84": {
+    "value": "T",
+    "description": "Vehicle Light"
+  },
   "macro99": {
     "value": "[{LWIN}R]NOTEPAD{RETURN}HELLO",
     "description": "Notepad"

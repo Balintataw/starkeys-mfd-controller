@@ -1,8 +1,15 @@
 import styles from './BlockButton.module.css'
 
-export const BlockButton = ({ children, onClick, selected, style, danger }) => (
+export const BlockButton = ({
+  children,
+  onClick,
+  selected,
+  style,
+  danger,
+  disabled = false,
+}) => (
   <button
-    onClick={onClick}
+    onClick={disabled ? () => {} : onClick}
     style={{
       ...style,
       backgroundColor: danger
@@ -10,7 +17,9 @@ export const BlockButton = ({ children, onClick, selected, style, danger }) => (
         : selected
         ? 'var(--primary20)'
         : undefined,
-      border: danger ? '1px solid var(--danger10)' : undefined,
+      border: danger ? '1px solid var(--danger)' : undefined,
+      opacity: disabled ? 0.5 : 1,
+      color: danger ? 'var(--danger)' : undefined,
     }}
     className={styles.block_button}>
     {children}
