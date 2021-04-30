@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="24px" height="24px" viewBox="0 0 24 24" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="MobiGlas" fill="currentColor" fill-rule="nonzero">
+            <path d="M12,0 C18.627417,0 24,5.372583 24,12 C24,18.627417 18.627417,24 12,24 C5.372583,24 0,18.627417 0,12 C0,5.372583 5.372583,0 12,0 Z M12,2.2 C6.58760945,2.2 2.2,6.58760945 2.2,12 C2.2,17.4123905 6.58760945,21.8 12,21.8 C17.4123905,21.8 21.8,17.4123905 21.8,12 C21.8,6.58760945 17.4123905,2.2 12,2.2 Z" id="Combined-Shape"></path>
+            <rect id="Rectangle" x="4" y="8" width="4" height="3" rx="0.3"></rect>
+            <rect id="Rectangle-Copy" x="10" y="8" width="4" height="3" rx="0.3"></rect>
+            <rect id="Rectangle-Copy-2" x="16" y="8" width="4" height="3" rx="0.3"></rect>
+            <rect id="Rectangle-Copy-3" x="16" y="13" width="4" height="3" rx="0.3"></rect>
+            <rect id="Rectangle-Copy-4" x="10" y="13" width="4" height="3" rx="0.3"></rect>
+            <rect id="Rectangle-Copy-5" x="4" y="13" width="4" height="3" rx="0.3"></rect>
+        </g>
+    </g>
+</svg>

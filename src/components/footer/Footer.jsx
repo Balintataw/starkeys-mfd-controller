@@ -5,7 +5,7 @@ import { store } from '../../store'
 
 import { ReactComponent as Map } from '../../assets/map.svg'
 import { ReactComponent as Talk } from '../../assets/talk.svg'
-import { ReactComponent as Mobi } from '../../assets/mobi.svg'
+import { ReactComponent as Mobi } from '../../assets/mobiglas.svg'
 
 import styles from './Footer.module.css'
 
