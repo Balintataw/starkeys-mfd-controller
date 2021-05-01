@@ -3,9 +3,9 @@ import { useContext } from 'react'
 import { conn } from '../../client2server'
 import { store } from '../../store'
 
-import { ReactComponent as Map } from '../../assets/map.svg'
-import { ReactComponent as Talk } from '../../assets/talk.svg'
+import { ReactComponent as Talk } from '../../assets/comms.svg'
 import { ReactComponent as Mobi } from '../../assets/mobiglas.svg'
+import { ReactComponent as StarMap } from '../../assets/starmap.svg'
 
 import styles from './Footer.module.css'
 
@@ -18,7 +18,7 @@ export const Footer = () => {
 
   return (
     <footer className={styles.footer}>
-      <Map
+      <StarMap
         onClick={() => handleClick('macro:2')}
         style={{ textColor: 'var(--primary)', height: '60px', width: '60px' }}
       />
