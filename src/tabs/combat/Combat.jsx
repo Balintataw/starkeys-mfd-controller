@@ -6,12 +6,15 @@ import { PowerBlock } from '../../components/powerBlock/PowerBlock'
 
 import { ReactComponent as ArrowCircleRight } from '../../assets/arrow-circle-right.svg'
 import { ReactComponent as ArrowCircleLeft } from '../../assets/arrow-circle-left.svg'
+import { ReactComponent as ResetIcon } from '../../assets/reset.svg'
 
 import { conn } from '../../client2server'
 import { store } from '../../store'
 import * as Graph from '../../Graph'
 
 import styles from './Combat.module.css'
+import { ShieldGrid } from './tabs/ShieldGrid'
+import { throttle } from '../../helpers'
 
 const COMBAT_TABS = Object.freeze({
   POWER: 'power',
@@ -27,6 +30,22 @@ export const CombatTab = () => {
   const handleRef = useRef(null)
 
   const [tab, setTab] = useState(COMBAT_TABS.POWER)
+
+  function send(macro) {
+    console.log('SEND', macro)
+    // conn(state.hostip, state.fileid, macro)
+  }
+
+  const throttledSend = throttle(send, 300)
+
+  function resetPowerDistribution() {
+    // eslint-disable-next-line no-undef
+    $('.map-selector').css({
+      left: 175,
+      top: 115,
+    })
+    send('macro:7')
+  }
 
   useLayoutEffect(() => {
     const points = polyRef?.current
@@ -48,6 +67,18 @@ export const CombatTab = () => {
         drag(event, ui) {
           const { left } = ui.position
           const top = -ui.position.top
+          if (top < -115) {
+            // power to weapons
+            throttledSend('macro:6')
+          }
+          if (top > -115 && left < 175) {
+            // power to engines
+            throttledSend('macro:4')
+          }
+          if (top > -115 && left > 175) {
+            // power to shields
+            throttledSend('macro:5')
+          }
           const constrained = triangle.constrain(
             new Graph.aw.Graph.Point(left, top),
           )
@@ -57,10 +88,6 @@ export const CombatTab = () => {
       })
     }
   }, [tab])
-
-  function send(macro) {
-    conn(state.hostip, state.fileid, macro)
-  }
 
   // Returns true if point P inside the triangle with vertices at A, B and C
   // representing 2D vectors and points as [x,y]. Based on
@@ -109,36 +136,60 @@ export const CombatTab = () => {
 
       {tab === COMBAT_TABS.POWER && (
         <>
-          <div
-            className={`${styles.content__rows_container} map`}
-            style={{
-              width: '300px',
-              height: '300px',
-              position: 'relative',
-            }}>
-            <svg height="100%" width="100%">
-              <polygon
-                ref={polyRef}
-                points="0,300 300,300 150,50"
-                style={{ fill: 'var(--primary20)' }}
-              />
-            </svg>
+          <div className={styles.content__row_container}>
             <div
-              ref={handleRef}
-              className="map-selector"
               style={{
-                display: 'inline-block',
-                width: '15px',
-                height: '15px',
-                border: '1px solid var(--danger)',
-                borderRadius: '50%',
-                position: 'absolute',
-                top: '200px',
-                left: '150px',
-                marginTop: '-8px',
-                marginLeft: '-8px',
-              }}
-            />
+                display: 'flex',
+                justifyContent: 'space-between',
+                width: '100%',
+              }}>
+              <span>ENGINES</span>
+              <span>SHIELDS</span>
+            </div>
+            <div
+              className="map"
+              style={{
+                width: '350px',
+                height: '300px',
+                position: 'relative',
+              }}>
+              <ResetIcon
+                className={styles.reset_icon}
+                onClick={resetPowerDistribution}>
+                RESET
+              </ResetIcon>
+              <svg height="100%" width="100%">
+                <polygon
+                  ref={polyRef}
+                  points="0,0 350,0 175,300"
+                  style={{ fill: 'var(--primary20)' }}
+                />
+              </svg>
+              <div
+                ref={handleRef}
+                className="map-selector"
+                style={{
+                  display: 'inline-block',
+                  width: '15px',
+                  height: '15px',
+                  border: '4px solid var(--danger)',
+                  borderRadius: '50%',
+                  position: 'absolute',
+                  top: '115px',
+                  left: '175px',
+                  marginTop: '-8px',
+                  marginLeft: '-8px',
+                }}
+              />
+            </div>
+            <div
+              style={{
+                display: 'flex',
+                justifyContent: 'center',
+                width: '100%',
+              }}>
+              <span>WEAPONS</span>
+            </div>
           </div>
 
           <PowerBlock />
@@ -268,7 +319,10 @@ export const CombatTab = () => {
 
       {tab === COMBAT_TABS.SHIELDS && (
         <>
-          <div
+          <div className={`${styles.content__rows_container}`}>
+            <ShieldGrid send={send} />
+          </div>
+          {/* <div
             className={`${styles.content__rows_container} map`}
             style={{
               width: '300px',
@@ -297,7 +351,7 @@ export const CombatTab = () => {
                 marginLeft: '-8px',
               }}
             />
-          </div>
+          </div> */}
 
           <PowerBlock />
         </>

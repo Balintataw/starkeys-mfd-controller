@@ -74,31 +74,27 @@ export const FlightTab = () => {
       {tab === FLIGHT_TABS.QUANTUM && (
         <>
           <div className={styles.content__rows_container}>
-            {isMobileDevice ? (
-              <div style={{ position: 'relative' }}>
-                <RoundButton
-                  text="ENGAGE QUANTUM"
-                  onClick={() => send('macro:26')}
-                />
-                <div
-                  style={{
-                    position: 'absolute',
-                    bottom: '-20px',
-                    height: '80px',
-                    width: '100%',
-                    backgroundColor: 'var(--black80)',
-                    zIndex: 20,
-                  }}>
-                  <BlockButton
-                    style={{ height: '100%' }}
-                    onClick={() => send('macro:25')}>
-                    INITIATE SPOOL
-                  </BlockButton>
-                </div>
+            <div style={{ position: 'relative' }}>
+              <RoundButton
+                text="ENGAGE QUANTUM"
+                onClick={() => send('macro:26')}
+              />
+              <div
+                style={{
+                  position: 'absolute',
+                  bottom: '-20px',
+                  height: '80px',
+                  width: '100%',
+                  backgroundColor: 'var(--black80)',
+                  zIndex: 20,
+                }}>
+                <BlockButton
+                  style={{ height: '100%' }}
+                  onClick={() => send('macro:25')}>
+                  INITIATE SPOOL
+                </BlockButton>
               </div>
-            ) : (
-              <SystemsDesktop send={send} />
-            )}
+            </div>
           </div>
 
           <PowerBlock />

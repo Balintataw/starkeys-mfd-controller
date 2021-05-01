@@ -1,0 +1,14 @@
+.shield_grid {
+  display: grid;
+  grid-gap: 24px;
+  grid-template-columns: repeat(3, 1fr);
+}
+
+.shield_grid__item {
+  height: 95px;
+  width: 95px;
+}
+
+.shield_grid__item:active {
+  background-color: var(--primary10);
+}
