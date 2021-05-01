@@ -24,7 +24,7 @@ const COMBAT_TABS = Object.freeze({
 
 export const CombatTab = () => {
   const { state } = useContext(store)
-  // const isMobileDevice = useMediaQuery({ maxDeviceWidth: 460 })
+  const isMobileDevice = useMediaQuery({ maxDeviceWidth: 460 })
 
   const polyRef = useRef(null)
   const handleRef = useRef(null)
@@ -32,11 +32,12 @@ export const CombatTab = () => {
   const [tab, setTab] = useState(COMBAT_TABS.POWER)
 
   function send(macro) {
-    console.log('SEND', macro)
-    // conn(state.hostip, state.fileid, macro)
+    conn(state.hostip, state.fileid, macro)
   }
 
   const throttledSend = throttle(send, 300)
+
+  const fontSize = isMobileDevice ? '16px' : '18px'
 
   function resetPowerDistribution() {
     // eslint-disable-next-line no-undef
@@ -118,78 +119,87 @@ export const CombatTab = () => {
       <div className={styles.top_row}>
         <BlockButton
           selected={tab === COMBAT_TABS.POWER}
+          style={{ fontSize }}
           onClick={() => setTab(COMBAT_TABS.POWER)}>
-          POWER
+          {isMobileDevice ? 'SYSTEMS' : 'POWER'}
         </BlockButton>
         <BlockButton
-          style={{ margin: '0 12px' }}
+          style={{ margin: '0 12px', fontSize }}
           selected={tab === COMBAT_TABS.TARGETING}
           onClick={() => setTab(COMBAT_TABS.TARGETING)}>
           TARGETING
         </BlockButton>
-        <BlockButton
-          selected={tab === COMBAT_TABS.SHIELDS}
-          onClick={() => setTab(COMBAT_TABS.SHIELDS)}>
-          SHIELDS
-        </BlockButton>
+        {isMobileDevice && (
+          <BlockButton
+            selected={tab === COMBAT_TABS.SHIELDS}
+            style={{ fontSize }}
+            onClick={() => setTab(COMBAT_TABS.SHIELDS)}>
+            SHIELDS
+          </BlockButton>
+        )}
       </div>
 
       {tab === COMBAT_TABS.POWER && (
         <>
-          <div className={styles.content__row_container}>
-            <div
-              style={{
-                display: 'flex',
-                justifyContent: 'space-between',
-                width: '100%',
-              }}>
-              <span>ENGINES</span>
-              <span>SHIELDS</span>
-            </div>
-            <div
-              className="map"
-              style={{
-                width: '350px',
-                height: '300px',
-                position: 'relative',
-              }}>
-              <ResetIcon
-                className={styles.reset_icon}
-                onClick={resetPowerDistribution}>
-                RESET
-              </ResetIcon>
-              <svg height="100%" width="100%">
-                <polygon
-                  ref={polyRef}
-                  points="0,0 350,0 175,300"
-                  style={{ fill: 'var(--primary20)' }}
-                />
-              </svg>
+          <div
+            className={styles.row}
+            style={{ width: '100%', justifyContent: 'space-around' }}>
+            <div className={styles.content__row_container}>
               <div
-                ref={handleRef}
-                className="map-selector"
                 style={{
-                  display: 'inline-block',
-                  width: '15px',
-                  height: '15px',
-                  border: '4px solid var(--danger)',
-                  borderRadius: '50%',
-                  position: 'absolute',
-                  top: '115px',
-                  left: '175px',
-                  marginTop: '-8px',
-                  marginLeft: '-8px',
-                }}
-              />
+                  display: 'flex',
+                  justifyContent: 'space-between',
+                  width: '100%',
+                }}>
+                <span>ENGINES</span>
+                <span>SHIELDS</span>
+              </div>
+              <div
+                className="map"
+                style={{
+                  width: '350px',
+                  height: '300px',
+                  position: 'relative',
+                }}>
+                <ResetIcon
+                  className={styles.reset_icon}
+                  onClick={resetPowerDistribution}>
+                  RESET
+                </ResetIcon>
+                <svg height="100%" width="100%">
+                  <polygon
+                    ref={polyRef}
+                    points="0,0 350,0 175,300"
+                    style={{ fill: 'var(--primary20)' }}
+                  />
+                </svg>
+                <div
+                  ref={handleRef}
+                  className="map-selector"
+                  style={{
+                    display: 'inline-block',
+                    width: '15px',
+                    height: '15px',
+                    border: '4px solid var(--danger)',
+                    borderRadius: '50%',
+                    position: 'absolute',
+                    top: '115px',
+                    left: '175px',
+                    marginTop: '-8px',
+                    marginLeft: '-8px',
+                  }}
+                />
+              </div>
+              <div
+                style={{
+                  display: 'flex',
+                  justifyContent: 'center',
+                  width: '100%',
+                }}>
+                <span>WEAPONS</span>
+              </div>
             </div>
-            <div
-              style={{
-                display: 'flex',
-                justifyContent: 'center',
-                width: '100%',
-              }}>
-              <span>WEAPONS</span>
-            </div>
+            {!isMobileDevice && <ShieldGrid send={send} />}
           </div>
 
           <PowerBlock />
