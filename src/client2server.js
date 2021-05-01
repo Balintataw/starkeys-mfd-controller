@@ -18,7 +18,7 @@ export const conn = (hostip, fileid, macrostr) => {
       // alert("WebSocket is supported by your Browser!");
 
       // Let us open a web socket
-      const ws = new WebSocket(`ws://${hostip}/echo`)
+      const ws = new WebSocket(`wss://${hostip}/echo`)
 
       ws.onopen = () => {
         console.log('onopen called')
