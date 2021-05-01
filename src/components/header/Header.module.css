@@ -26,6 +26,10 @@
   width: 100%;
 }
 
+.header__top {
+  justify-content: flex-end;
+}
+
 .header__top > div,
 .header__bottom > div {
   flex-grow: 1;

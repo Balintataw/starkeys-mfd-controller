@@ -22,12 +22,20 @@
   z-index: 900;
 }
 
-.close_button {
-  margin-left: auto;
-  padding: 8px;
-  background-color: var(--black80);
-  border: none;
+.modal_card__header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 12px;
+  border-bottom: 1px solid var(--primary);
+  margin-bottom: 12px;
+  padding-bottom: 18px;
+}
+
+.modal_card__header_button {
   color: var(--primary);
+  height: 32px;
+  width: 32px;
 }
 
 .themes_wrapper {

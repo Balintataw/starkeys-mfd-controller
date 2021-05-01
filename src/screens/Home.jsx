@@ -1,4 +1,4 @@
-import { useContext, useEffect, useState } from 'react'
+import { useContext, useEffect, useRef, useState } from 'react'
 
 import { ConnectionModal } from '../components/modals/ConnectionModal'
 import { Header, HEADER_TABS } from '../components/header/Header'
@@ -14,9 +14,14 @@ import { store, types } from '../store'
 import { setCSSVariables } from '../helpers'
 
 import styles from './Home.module.css'
+import { useFullScreen } from '../hooks/useFullScreen'
 
 export const Home = () => {
   const { state, dispatch } = useContext(store)
+
+  const fullscreenContainer = useRef()
+
+  const [isFullscreen, setFullscreen] = useFullScreen(fullscreenContainer)
 
   const [tab, setTab] = useState(HEADER_TABS.FLIGHT)
 
@@ -56,13 +61,13 @@ export const Home = () => {
     setTab(t)
   }
 
+  function toggleFullscreen() {
+    return isFullscreen ? document.exitFullscreen() : setFullscreen(true)
+  }
+
   return (
-    <div className={styles.home}>
-      <Header
-        serverCheck={state.serverCheck}
-        onTabSelect={onTabSelect}
-        currentTab={tab}
-      />
+    <div ref={fullscreenContainer} className={styles.home}>
+      <Header onTabSelect={onTabSelect} currentTab={tab} />
 
       <div className={styles.content}>
         {tab === HEADER_TABS.FLIGHT && <FlightTab />}
@@ -75,7 +80,12 @@ export const Home = () => {
 
       {!state.serverCheck && <ConnectionModal />}
 
-      {state.settingsModalVisible && <SettingsModal />}
+      {state.settingsModalVisible && (
+        <SettingsModal
+          toggleFullscreen={toggleFullscreen}
+          isFullscreen={isFullscreen}
+        />
+      )}
     </div>
   )
 }

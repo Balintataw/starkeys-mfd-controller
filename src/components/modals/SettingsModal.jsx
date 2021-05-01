@@ -3,15 +3,22 @@ import { useState, useContext } from 'react'
 
 import { store, types } from '../../store'
 import { THEMES } from '../../themes'
-import { setCSSVariables, useLocalStorage } from '../../helpers'
+import { setCSSVariables } from '../../helpers'
+import { useLocalStorage } from '../../hooks/useLocalStorage'
+
+import { ReactComponent as Fullscreen } from '../../assets/fullscreen.svg'
+import { ReactComponent as FullscreenExit } from '../../assets/fullscreen-exit.svg'
+import { ReactComponent as Close } from '../../assets/close.svg'
 
 import styles from './SettingsModal.module.css'
 
-export const SettingsModal = () => {
+export const SettingsModal = ({ isFullscreen, toggleFullscreen }) => {
   const { state, dispatch } = useContext(store)
+
+  const [_, setTheme] = useLocalStorage('theme', state.theme)
+
   const [hostIp, setHostIp] = useState(state.hostip)
   const [fileId, setFileId] = useState(state.fileid)
-  const [_, setTheme] = useLocalStorage('theme', state.theme)
 
   function handleConnect() {
     dispatch({ type: types.setHostIP, payload: hostIp })
@@ -35,9 +42,23 @@ export const SettingsModal = () => {
   return (
     <div className={styles.modal_bg}>
       <div className={styles.modal_card}>
-        <button className={styles.close_button} onClick={closeModal}>
-          CLOSE
-        </button>
+        <div className={styles.modal_card__header}>
+          {isFullscreen ? (
+            <FullscreenExit
+              className={styles.modal_card__header_button}
+              onClick={toggleFullscreen}
+            />
+          ) : (
+            <Fullscreen
+              className={styles.modal_card__header_button}
+              onClick={toggleFullscreen}
+            />
+          )}
+          <Close
+            className={styles.modal_card__header_button}
+            onClick={closeModal}
+          />
+        </div>
         <span className={styles.label}>Themes:</span>
         <div className={styles.themes_wrapper}>
           {Object.keys(THEMES).map((t) => (
