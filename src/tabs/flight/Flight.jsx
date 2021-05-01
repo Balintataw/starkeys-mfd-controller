@@ -77,6 +77,7 @@ export const FlightTab = () => {
             <div style={{ position: 'relative' }}>
               <RoundButton
                 text="ENGAGE QUANTUM"
+                style={{ top: 0 }}
                 onClick={() => send('macro:26')}
               />
               <div

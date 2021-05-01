@@ -15,3 +15,7 @@ Targeting Cycle Friendlies Back: LeftControl 6
 Targeting Cycle Hostiles Back: LeftControl 5
 
 Targeting Cycle Attackers Back: LeftControl 4
+
+Scanner Increase Scanning Zone: LALT '
+
+Scanner Decrease Scanning Zone: LALT ;

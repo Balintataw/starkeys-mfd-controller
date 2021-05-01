@@ -27,4 +27,11 @@ export const THEMES = {
     danger: 'rgba(160, 11, 33, 1)',
     danger10: 'rgba(160, 11, 33, 0.1)',
   },
+  Origin: {
+    primary: 'rgba(200, 207, 227, 1)',
+    primary10: 'rgba(200, 207, 227, 0.1)',
+    primary20: 'rgba(200, 207, 227, 0.2)',
+    danger: 'rgba(160, 11, 33, 1)',
+    danger10: 'rgba(160, 11, 33, 0.1)',
+  },
 }

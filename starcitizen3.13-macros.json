@@ -185,7 +185,47 @@
   },
   "macro37": {
     "value": "+5{RMOUSEBUTTON}",
-    "description": "Ping"
+    "description": "Scanner Ping Full"
+  },
+  "macro85": {
+    "value": "+2{RMOUSEBUTTON}",
+    "description": "Scanner Ping half"
+  },
+  "macro86": {
+    "value": "[{LALT}{SEMICOLON}]",
+    "description": "Scanner DECREASE Scanning Zone"
+  },
+  "macro87": {
+    "value": "[{LALT}{SINGLEQUOTE}]",
+    "description": "Scanner Increase Scanning Zone"
+  },
+  "macro88": {
+    "value": "{LMOUSEBUTTON}",
+    "description": "Mining Activate Laser"
+  },
+  "macro89": {
+    "value": "{RMOUSEBUTTON}",
+    "description": "Mining Toggle Laser Mode"
+  },
+  "macro90": {
+    "value": "G",
+    "description": "Mining Toggle Laser Gimbal"
+  },
+  "macro91": {
+    "value": "[{LALT}1]",
+    "description": "Mining Consumable 1"
+  },
+  "macro92": {
+    "value": "[{LALT}2]",
+    "description": "Mining Consumable 2"
+  },
+  "macro93": {
+    "value": "[{LALT}3]",
+    "description": "Mining Consumable 3"
+  },
+  "macro94": {
+    "value": "[{LALT}J]",
+    "description": "Mining Jettison Cargo"
   },
   "macro38": {
     "value": "+5{BACK}",

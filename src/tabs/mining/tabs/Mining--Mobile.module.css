@@ -1,9 +1,9 @@
-.content__rows_container {
-  position: relative;
+.top_row {
   display: flex;
   align-items: center;
   justify-content: space-evenly;
-  width: 100%;
+  height: 70px;
+  width: 80%;
 }
 
 .row {
@@ -12,18 +12,11 @@
   margin-bottom: 8px;
 }
 
-.content__left_col {
+.content__rows_container {
   position: relative;
   display: flex;
   flex-direction: column;
   align-items: center;
-  width: 100%;
-  margin-right: 12px;
-}
-
-.content__right_col {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+  justify-content: center;
   width: 100%;
 }
