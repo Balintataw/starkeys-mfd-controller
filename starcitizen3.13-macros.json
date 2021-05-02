@@ -184,11 +184,11 @@
     "description": "Shields Bottom"
   },
   "macro37": {
-    "value": "+5{RMOUSEBUTTON}",
+    "value": "+3{RMOUSEBUTTON}",
     "description": "Scanner Ping Full"
   },
   "macro85": {
-    "value": "+2{RMOUSEBUTTON}",
+    "value": "+1{RMOUSEBUTTON}",
     "description": "Scanner Ping half"
   },
   "macro86": {

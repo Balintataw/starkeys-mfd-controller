@@ -4,10 +4,12 @@
 }
 
 .content {
-  height: calc(100% - 200px); /* footer height + header height */
+  /* height: calc(100% - 200px); footer height + header height */
+  height: 100%;
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  justify-content: center;
+  /* justify-content: space-between; */
   flex-direction: column;
   padding: 0 24px;
 }

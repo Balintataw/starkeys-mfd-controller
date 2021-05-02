@@ -3,15 +3,16 @@ import { useMediaQuery } from 'react-responsive'
 
 import { BlockButton } from '../../components/buttons/BlockButton'
 import { RoundButton } from '../../components/buttons/RoundButton'
+import { PowerBlock } from '../../components/powerBlock/PowerBlock'
+import { UtilityBlock } from '../../components/utilityBlock/UtilityBlock'
+
+import { SystemsMobile } from './tabs/Systems--Mobile'
+import { SystemsDesktop } from './tabs/Systems--Desktop'
 
 import { conn } from '../../client2server'
 import { store } from '../../store'
 
 import styles from './Flight.module.css'
-import { PowerBlock } from '../../components/powerBlock/PowerBlock'
-import { SystemsMobile } from './tabs/Systems--Mobile'
-import { SystemsDesktop } from './tabs/Systems--Desktop'
-import { UtilityBlock } from '../../components/utilityBlock/UtilityBlock'
 
 const FLIGHT_TABS = Object.freeze({
   SYSTEMS: 'systems',
@@ -29,7 +30,7 @@ export const FlightTab = () => {
     conn(state.hostip, state.fileid, macro)
   }
 
-  const fontSize = isMobileDevice ? '16px' : '18px'
+  const fontSize = isMobileDevice ? '14px' : '18px'
 
   return (
     <>
@@ -144,25 +145,25 @@ export const FlightTab = () => {
             <div className={styles.row}>
               <BlockButton
                 onClick={() => send('macro:24')}
-                style={{ minWidth: '25%' }}>
+                style={{ minWidth: '70px', fontSize }}>
                 DECOUPLE
               </BlockButton>
               <div className={styles.h_spacer} />
               <BlockButton
                 onClick={() => send('macro10')}
-                style={{ minWidth: '25%' }}>
+                style={{ minWidth: '70px', fontSize }}>
                 GSAFE*
               </BlockButton>
               <div className={styles.h_spacer} />
               <BlockButton
                 onClick={() => send('macro10')}
-                style={{ minWidth: '25%' }}>
+                style={{ minWidth: '70px', fontSize }}>
                 ESP*
               </BlockButton>
               <div className={styles.h_spacer} />
               <BlockButton
                 onClick={() => send('macro10')}
-                style={{ minWidth: '25%' }}>
+                style={{ minWidth: '70px', fontSize }}>
                 WEAPONS*
               </BlockButton>
             </div>

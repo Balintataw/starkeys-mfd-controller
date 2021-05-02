@@ -15,10 +15,10 @@ export const conn = (hostip, fileid, macrostr) => {
   }
   if (hostip != null && fileid != null) {
     if ('WebSocket' in window) {
-      // alert("WebSocket is supported by your Browser!");
+      // alert('WebSocket is supported by your Browser!')
 
       // Let us open a web socket
-      const ws = new WebSocket(`wss://${hostip}/echo`)
+      const ws = new WebSocket(`ws://${hostip}/echo`)
 
       ws.onopen = () => {
         console.log('onopen called')
@@ -30,7 +30,7 @@ export const conn = (hostip, fileid, macrostr) => {
 
       ws.onmessage = (evt) => {
         // const received_msg = evt.data;
-        // alert("Message is received...");
+        // alert('Message is received...')
       }
 
       ws.onclose = () => {

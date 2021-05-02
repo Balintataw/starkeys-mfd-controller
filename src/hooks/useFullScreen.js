@@ -21,15 +21,44 @@ export const useFullScreen = (elRef) => {
   )
 
   const setFullscreen = () => {
-    if (elRef.current == null) return
-
-    elRef.current
-      .requestFullscreen()
-      .then(() => {
-        console.log(getBrowserFullscreenElementProp())
-        setIsFullscreen(document[getBrowserFullscreenElementProp()] != null)
-      })
-      .catch(() => setIsFullscreen(false))
+    const el = elRef.current
+    if (el == null) return
+    if (el.requestFullscreen) {
+      el.requestFullscreen()
+        .then(() => {
+          console.log(getBrowserFullscreenElementProp())
+          setIsFullscreen(document[getBrowserFullscreenElementProp()] != null)
+        })
+        .catch(() => setIsFullscreen(false))
+    } else if (el.webkitRequestFullScreen) {
+      el.webkitRequestFullScreen()
+        .then(() => {
+          console.log(getBrowserFullscreenElementProp())
+          setIsFullscreen(document[getBrowserFullscreenElementProp()] != null)
+        })
+        .catch(() => setIsFullscreen(false))
+    } else if (el.mozRequestFullScreen) {
+      el.mozRequestFullScreen()
+        .then(() => {
+          console.log(getBrowserFullscreenElementProp())
+          setIsFullscreen(document[getBrowserFullscreenElementProp()] != null)
+        })
+        .catch(() => setIsFullscreen(false))
+    } else if (el.msRequestFullscreen) {
+      el.msRequestFullscreen()
+        .then(() => {
+          console.log(getBrowserFullscreenElementProp())
+          setIsFullscreen(document[getBrowserFullscreenElementProp()] != null)
+        })
+        .catch(() => setIsFullscreen(false))
+    } else if (el.webkitEnterFullscreen) {
+      el.webkitEnterFullscreen() //for iphone this code worked
+        .then(() => {
+          console.log(getBrowserFullscreenElementProp())
+          setIsFullscreen(document[getBrowserFullscreenElementProp()] != null)
+        })
+        .catch(() => setIsFullscreen(false))
+    }
   }
 
   React.useLayoutEffect(() => {

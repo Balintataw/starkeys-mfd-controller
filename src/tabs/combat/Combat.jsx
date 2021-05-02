@@ -30,12 +30,38 @@ export const CombatTab = () => {
   const handleRef = useRef(null)
 
   const [tab, setTab] = useState(COMBAT_TABS.POWER)
+  const [weaponsCount, setWeaponsCount] = useState(0)
+  const [enginesCount, setEnginesCount] = useState(0)
+  const [shieldsCount, setShieldsCount] = useState(0)
 
   function send(macro) {
     conn(state.hostip, state.fileid, macro)
   }
 
-  const throttledSend = throttle(send, 300)
+  function handleWeapons() {
+    send('macro:6')
+    setWeaponsCount((wc) => (wc < 5 ? wc + 1 : wc))
+    setEnginesCount(0)
+    setShieldsCount(0)
+  }
+
+  function handleEngines() {
+    send('macro:4')
+    setEnginesCount((ec) => (ec < 5 ? ec + 1 : ec))
+    setWeaponsCount(0)
+    setShieldsCount(0)
+  }
+
+  function handleShields() {
+    send('macro:5')
+    setShieldsCount((sc) => (sc < 5 ? sc + 1 : sc))
+    setWeaponsCount(0)
+    setEnginesCount(0)
+  }
+
+  const throttledHandleWeapons = throttle(handleWeapons, 300)
+  const throttledHandleEngines = throttle(handleEngines, 300)
+  const throttledHandleShields = throttle(handleShields, 300)
 
   const fontSize = isMobileDevice ? '16px' : '18px'
 
@@ -46,6 +72,9 @@ export const CombatTab = () => {
       top: 115,
     })
     send('macro:7')
+    setWeaponsCount(0)
+    setEnginesCount(0)
+    setShieldsCount(0)
   }
 
   useLayoutEffect(() => {
@@ -68,17 +97,18 @@ export const CombatTab = () => {
         drag(event, ui) {
           const { left } = ui.position
           const top = -ui.position.top
-          if (top < -115) {
+          // console.log('t', top, 'l', left)
+          if (top < -140) {
             // power to weapons
-            throttledSend('macro:6')
-          }
-          if (top > -115 && left < 175) {
+            throttledHandleWeapons()
+          } else if (top > -115 && left < 150) {
             // power to engines
-            throttledSend('macro:4')
-          }
-          if (top > -115 && left > 175) {
+            throttledHandleEngines()
+          } else if (top > -115 && left > 200) {
             // power to shields
-            throttledSend('macro:5')
+            throttledHandleShields()
+          } else {
+            resetPowerDistribution()
           }
           const constrained = triangle.constrain(
             new Graph.aw.Graph.Point(left, top),
@@ -161,6 +191,49 @@ export const CombatTab = () => {
                   height: '300px',
                   position: 'relative',
                 }}>
+                <div
+                  style={{
+                    display: 'flex',
+                    alignItems: 'flex-end',
+                    position: 'absolute',
+                    bottom: 0,
+                    left: 0,
+                  }}>
+                  <div
+                    style={{
+                      display: 'flex',
+                      flexDirection: 'column',
+                      alignItems: 'center',
+                    }}>
+                    {Array.from(new Array(weaponsCount)).map((n) => (
+                      <span>o</span>
+                    ))}
+                    <span>W</span>
+                  </div>
+                  <div
+                    style={{
+                      display: 'flex',
+                      flexDirection: 'column',
+                      alignItems: 'center',
+                      margin: '0 8px',
+                    }}>
+                    {Array.from(new Array(enginesCount)).map((n) => (
+                      <span>o</span>
+                    ))}
+                    <span>E</span>
+                  </div>
+                  <div
+                    style={{
+                      display: 'flex',
+                      flexDirection: 'column',
+                      alignItems: 'center',
+                    }}>
+                    {Array.from(new Array(shieldsCount)).map((n) => (
+                      <span>o</span>
+                    ))}
+                    <span>S</span>
+                  </div>
+                </div>
                 <ResetIcon
                   className={styles.reset_icon}
                   onClick={resetPowerDistribution}>
